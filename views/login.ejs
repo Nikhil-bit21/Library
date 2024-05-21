@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" href="/favicon/favicon.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/hamburgers.css" />
+    
+    <title>Login Page</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="mcon">
+        <button class="hamburger hamburger--collapse menu" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </div>
+        <div class="links"> 
+          <a href="/" class="hlink"> <span class="head"> Libro </span> </a>
+          <a href="/" class="link"> <span >Home</span> </a>
+          <a href="/profile" class="link"> <span >Profile</span> </a>
+          <a href="/login" class="link"> <span >Login</span> </a>
+          <a href="/logout" class="link"> <span>Logout</span> </a>
+        </div>
+    </nav>
+
+    <div class="linkDiv" style="display: none;">
+        <div> <a href="/">Home</a> </div>
+        <div> <a href="/profile">Profile</a> </div>
+        <div> <a href="/login">Login</a> </div>
+        <div> <a href="/logout">Logout</a> </div>
+     </div>
+
+    <section style="margin-top: 80px;" class="loginContainer">
+        <div class="err-msg"><h4><%=msg%></h4></div>
+
+        <div class="main">
+            <div class="form">
+                <h2>Login Form</h2>
+                <form action="/login" method="post">
+                    <div class="input__box">
+                        <input type="text" class="input" required="" autocomplete="off" name="uname" />
+                        <label class="user-label">Username</label>
+                    </div>
+                    <div class="input__box">
+                        <input type="password" class="input" required="" autocomplete="off" name="upass" />
+                        <label class="user-label">Password</label>
+                    </div>
+                    <div class="input__btn ">
+                        <input class="sbtn" type="submit" value="Login" />
+                    </div>  
+                    <p class="forget">
+                        Don't have an account? <a href="/signup">Sign Up</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <script>
+        const menu = document.getElementsByClassName("menu")[0];
+        const links = document.getElementsByClassName("linkDiv")[0];;
+        const myclass = "is-active";
+       
+        menu.addEventListener("click",()=>{
+            if (menu.classList.contains(myclass)) {
+                menu.classList.remove(myclass);
+                links.style.display="none";
+            } 
+            else {
+                menu.classList.add(myclass);
+                links.style.display="flex";
+            }
+        })
+    
+        menu.addEventListener("focusout", (event) => {
+        const relatedTarget = event.relatedTarget;
+        if (!menu.contains(relatedTarget) && !links.contains(relatedTarget)) {
+            menu.classList.remove(myclass);
+            links.style.display = "none";
+        }
+    });
+    </script>
+</body>
+</html>

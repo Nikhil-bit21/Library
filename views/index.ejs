@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"  href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/hamburgers.css"/>
+    <link rel="icon" href="/favicon/favicon.png" />
+    
+    <title>Home Page</title>
+</head>
+<body>
+    <!--Loader-->
+    <div class="loader"></div>
+    <!---Main Page-->
+    <nav class="nav-bar">
+        <div class="mcon">
+        <button class="hamburger hamburger--collapse menu" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </div>
+        <div class="links"> 
+          <a href="/" class="hlink"> <span class="head"> Libro </span> </a>
+          <a href="/" class="link"> <span >Home</span> </a>
+          <a href="/profile" class="link"> <span >Profile</span> </a>
+          <% if(name==="admin") {%>
+            <a href="/addbook" class="link"> <span >Add Book</span> </a>
+          <%}%>
+          <a href="/login" class="link"> <span >Login</span> </a>
+          <a href="/logout" class="link"> <span>Logout</span> </a>
+        </div>
+        
+        <div class="profile-name">
+            <h4><%=name%></h4>
+        </div>
+    </nav>
+
+    <div class="linkDiv" style="display: none;">
+       <div> <a href="/">Home</a> </div>
+       <div> <a href="/profile">Profile</a> </div>
+       <% if(name==="admin") {%>
+        <div> <a href="/addbook">Add book</a> </div>
+       <%}%>
+       <div> <a href="/login">Login</a> </div>
+       <div> <a href="/logout">Logout</a> </div>
+    </div>
+
+    <div class="title">
+        <h2>Books in Library</h2>
+        <h4>Here is a list of books on the library</h4>
+    </div>
+
+    <div class="container">
+  <div class="books">
+
+        <%books.forEach((item)=>{%>
+            <div class="book">
+                <img src="<%=item.cover%>" height="250px" width="200px" alt="cover"/>
+                <h3><%=item.name%></h3>
+                <h5><%=item.author%></h5>
+                
+                <% if (item.available == true) { %>
+                    <a href="/add/<%= item.id %>"><button class="btn borrow" type="button" value="borrow">Borrow</button></a>
+                <% } else { %>
+                    <a href="/remove/<%= item.id %>"><button class="btn onloan" type="button" value="onLoan">On Loan</button></a>
+                <% } %>
+            </div>
+        <%})%>
+    </div>
+
+</div>
+
+<script>
+    const menu = document.getElementsByClassName("menu")[0];
+    const links = document.getElementsByClassName("linkDiv")[0];;
+    const myclass = "is-active";
+   
+    menu.addEventListener("click",()=>{
+        if (menu.classList.contains(myclass)) {
+            menu.classList.remove(myclass);
+            links.style.display="none";
+        } 
+        else {
+            menu.classList.add(myclass);
+            links.style.display="flex";
+        }
+    })
+
+    // menu.addEventListener("focus",(()=>{
+    //     if (menu.classList.contains(myclass)) {
+    //         menu.classList.remove(myclass);
+    //         links.style.display="none";
+    //     } 
+    //     else {
+    //         menu.classList.add(myclass);
+    //         links.style.display="flex";
+    //     }
+    // }))
+
+   
+
+    // menu.addEventListener("blur",()=>{
+    //     menu.classList.remove(myclass);
+    //     links.style.display="none";
+    // })
+
+    menu.addEventListener("focusout", (event) => {
+        const relatedTarget = event.relatedTarget;
+        if (!menu.contains(relatedTarget) && !links.contains(relatedTarget)) {
+            menu.classList.remove(myclass);
+            links.style.display = "none";
+        }
+    });
+    
+    document.onreadystatechange = function () {
+        if (document.readyState === "complete") {
+            var loader = document.getElementsByClassName("loader")[0];
+            loader.style.display = "none";
+        }
+    };
+    </script>
+    
+</body>
+</html>

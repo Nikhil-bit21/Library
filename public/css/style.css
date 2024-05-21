@@ -1,0 +1,369 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: helvetica;
+}
+::selection{
+    background-color: #eb919c;
+    color: #fff;
+}
+.loader {
+    width:100%;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    z-index: 200;
+    background: #fff url('../loader/loader.gif') no-repeat center center;
+    background-size: 30%;
+}
+
+.err-msg {
+    color: red;
+}
+
+.nav-bar{
+    width:100%;
+    height:60px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255,255,255,0.3);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    position: fixed;
+    top:0;
+    z-index: 100;
+}
+
+.profile-name {
+    position: absolute;
+    margin-right:5px;
+    right: 0;
+}
+
+.head {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 30px;
+    transition: all 0.3s linear;
+}
+
+.head:hover {
+    text-shadow: 0 0 10px rgba(233, 121, 121, 0.64);
+}
+
+.hlink {
+    text-decoration: none;
+    color: #000;
+}
+
+.hlink:hover {
+    transform: translate(5px 5px);
+}
+
+.link{
+    margin:20px;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    transition: all 0.3s linear;
+}
+
+.link:hover {
+    background: rgba(244,244,244,100);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border:3px solid rgba(255,255,255,0.4);
+}
+
+.mcon {
+    display: none;
+}
+
+.linkDiv {
+    background: #fff;
+    position: fixed;
+    width: 200px;
+    height: 250px;
+    margin:10px;
+    z-index: 50;
+    border-radius: 10px;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.linkDiv div {
+    margin-top: 20px;
+    width: 200px;
+    height:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s linear;
+}
+.linkDiv div:hover {
+    background: rgba(244,244,244,100);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transform: scale(1.09);
+}
+
+.linkDiv div a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+}
+
+.title {
+    margin-top:80px;
+    margin-left:150px;
+}
+
+.container {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.books {
+    margin: auto;
+    padding:20px;
+    display: grid;
+    grid-template-columns: repeat(3,300px);
+    grid-gap:10px;
+    place-items: center;
+    overflow: hidden;
+}
+
+.book{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 420px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.7px);
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    transition: all 0.3s linear;
+}
+
+.book img {
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s linear;
+}
+
+.book:hover {
+    transform: scale(1.01);
+}
+.book:hover img {
+    transform: scale(1.03); 
+}
+
+.btn  {
+   background: #ff6e7f;
+   border: 0;
+   color:#fff;
+   width:100px;
+   height: 30px;
+   border-radius: 30px;
+   transition: all 0.3s linear;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.borrow {
+    background: #5cb85b;
+}
+
+.onloan {
+    background: #ff6e7f;
+}
+
+/* login page css */
+
+.loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+} 
+
+.main{
+    width: 400px;
+    display: flex;
+    min-height: 400px;
+    position: relative;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+.form {
+    border-radius: 20px;
+    margin: auto;
+    width:100%;
+    height:400px;
+    background: rgba(255, 255, 255, 0.33);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s linear;
+}
+.form:hover {
+    transform: scale(1.02);
+}
+
+.form h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size:40px;
+    color:#000;
+}
+.form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input__box {
+    margin:12px;
+    position: relative;
+}
+
+.input {
+    border: solid 1.5px #9e9e9e;
+    border-radius: 1rem;
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #000;
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.user-label {
+    position: absolute;
+    left: 15px;
+    color: #a19b9b;
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.input:focus, .input:valid {
+    outline: none;
+    border: 1.5px solid #1a73e8;
+}
+
+.input:focus ~ label, .input:valid ~ label {
+    transform: translateY(-50%) scale(0.8);
+    background-color: #fff;
+    padding: 0 .2em;
+    color: #2196f3;
+   }
+
+.forget {
+    color: #000
+}
+
+.sbtn {
+    transition: all 0.3s ease-in-out;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(244,244,244,100);
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    color: #000;
+}
+
+.sbtn:hover {
+    transform: translateY(3px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sbtn:active {
+    opacity: 0.5;
+  }
+
+  /*signup form css*/
+
+  .signupform {
+    height:450px;
+}
+
+/*Profile Page Css*/
+
+.Ptitle {
+    margin-top:80px;
+    margin-left:150px;
+}
+
+/*Add Book Page Css*/
+
+.bookform {
+    height:600px;
+}
+
+/*Profile Page Css*/
+
+
+/*media queris */
+
+
+@media screen and (max-width:2000px) {
+    .books{
+        grid-template-columns: repeat(5,300px);
+    }
+}
+
+@media screen and (min-width:1405px) and (max-width:1700px) {
+    .books {
+        grid-template-columns: repeat(4,300px);
+    }
+}
+
+@media screen and (min-width:1005px) and (max-width:1400px) {
+    .books{
+        grid-template-columns: repeat(3,300px);
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1000px) {
+    .books {
+        grid-template-columns: repeat(2, 300px);
+    }
+}
+
+@media screen and (max-width:746px) {
+    .books{
+      grid-template-columns: 300px;
+    }
+    .links {
+        display: none;
+    }
+    .mcon{
+        display: block;
+    }
+  }
